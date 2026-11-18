@@ -1,0 +1,14 @@
+- id: llm-pi-ai
+  config:
+    providers:
+      run-receipt-demo:
+        apiKeyEnv: RUN_RECEIPT_DEMO_KEY
+        api: openai-completions
+        baseURL: http://127.0.0.1:18979/v1
+        models:
+          - id: receipt-fixture
+            name: Receipt fixture
+- id: agent-default-model
+  config:
+    provider: run-receipt-demo
+    model: receipt-fixture

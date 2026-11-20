@@ -6,14 +6,14 @@ Open Run Receipt from the DSH sidebar to review delivery, execution, and report 
 
 ## Install
 
-The local package was verified on **DSH Web 0.2.2-rc.1** on Windows with Node.js 24. Stop the target Web profile and install into that same profile.
+This preview targets **DSH 0.2.2-rc.1 through the 0.2.2 series**. Web was verified on Windows with `0.2.2-rc.1` and `0.2.2-rc.5`. Stop the target Web profile and install into that same profile.
 
 ```powershell
-dsh plugin --profile web add "C:\path\to\jidekaixin2dian-dsh-run-receipt-0.1.0.tgz" -y
+dsh plugin --profile web add github:jidekaixin2dian/dsh-run-receipt -y
 dsh --profile web
 ```
 
-Use the same `DSH_HOME` for installation and startup. Desktop manages its own profile through the in-app plugin manager and a market source that lists the package. The verified local installation path uses Web and the CLI.
+Use the same `DSH_HOME` for installation and startup. In Desktop, open **Plugins → Add plugin**, enter `github:jidekaixin2dian/dsh-run-receipt`, and follow the prompts. Offline packages are available in [GitHub Releases](https://github.com/jidekaixin2dian/dsh-run-receipt/releases).
 
 ## Review a run
 
@@ -32,4 +32,4 @@ Rule edits apply to subsequent occurrences. Subscriptions, review evidence, and 
 dsh plugin --profile web remove @jidekaixin2dian/dsh-run-receipt -y
 ```
 
-The npm identity for market distribution is `@jidekaixin2dian/dsh-run-receipt`. Use the tarball for offline installation and the market’s migration action when switching to a market installation.
+The preview uses `github:jidekaixin2dian/dsh-run-receipt` as its distribution source. On Web, repeat the install command to update. On Desktop, use the built-in plugin manager or the community market. To switch an early local tarball install to GitHub, uninstall it and reinstall from GitHub in the same profile. Run Receipt can still read the profile ledger.

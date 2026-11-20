@@ -1,0 +1,48 @@
+name: npm publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Published GitHub release tag
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: npm-publish-${{ inputs.tag }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      RELEASE_TAG: ${{ inputs.tag }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ inputs.tag }}
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.18.1'
+          registry-url: https://registry.npmjs.org
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm test
+      - name: Check release tag and download its archive
+        run: |
+          version="$(npm pkg get version | tr -d '"')"
+          test "$RELEASE_TAG" = "v$version"
+          git merge-base --is-ancestor HEAD origin/main
+          gh release download "$RELEASE_TAG" --pattern "jidekaixin2dian-dsh-run-receipt-$version.tgz"
+      - run: node scripts/verify-package.mjs
+      - name: Publish the verified archive
+        run: |
+          version="$(npm pkg get version | tr -d '"')"
+          case "$version" in *-*) channel=beta ;; *) channel=latest ;; esac
+          npm publish "jidekaixin2dian-dsh-run-receipt-$version.tgz" --ignore-scripts --provenance --access public --tag "$channel"

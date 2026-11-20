@@ -7,7 +7,6 @@
     "zh": "查收 DSH 原生定时任务的投递回执、执行终态和报告验收结果。",
     "en": "Review delivery receipts, exact turn outcomes, and report checks for native DSH schedules."
   },
-  "npm": "@jidekaixin2dian/dsh-run-receipt",
-  "version": "0.1.0",
-  "install": "dsh plugin --profile web add @jidekaixin2dian/dsh-run-receipt"
+  "version": "0.1.0-beta.1",
+  "install": "dsh plugin --profile web add github:jidekaixin2dian/dsh-run-receipt"
 }

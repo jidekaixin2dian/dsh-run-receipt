@@ -6,14 +6,14 @@
 
 ## 安装
 
-本地包以 Windows 上的 **DSH Web 0.2.2-rc.1** 和 Node.js 24 验证。退出目标 Web profile，再在同一个 profile 中安装。
+预览版支持 DSH **0.2.2-rc.1 至 0.2.2** 系列。Web 在 Windows 上使用 `0.2.2-rc.1` 和 `0.2.2-rc.5` 验证。退出目标 Web profile，再在同一个 profile 中安装。
 
 ```powershell
-dsh plugin --profile web add "C:\path\to\jidekaixin2dian-dsh-run-receipt-0.1.0.tgz" -y
+dsh plugin --profile web add github:jidekaixin2dian/dsh-run-receipt -y
 dsh --profile web
 ```
 
-用过 `DSH_HOME` 的话，安装和启动使用同一个值。Desktop 由应用内插件管理器管理，使用能识别该包的市场安装源。此版的本地验收入口是 Web/CLI。
+用过 `DSH_HOME` 的话，安装和启动使用同一个值。Desktop 请打开「插件 → 添加插件」，输入 `github:jidekaixin2dian/dsh-run-receipt`，按宿主提示完成安装。离线安装包见 [GitHub Releases](https://github.com/jidekaixin2dian/dsh-run-receipt/releases)。
 
 ## 使用
 
@@ -32,4 +32,4 @@ dsh --profile web
 dsh plugin --profile web remove @jidekaixin2dian/dsh-run-receipt -y
 ```
 
-市场分发使用 npm 包名 `@jidekaixin2dian/dsh-run-receipt`。本地 tarball 是离线安装来源。以后迁移到市场源时，按市场的「切换到市场版」提示操作。
+本预览版从 GitHub 分发，安装来源为 `github:jidekaixin2dian/dsh-run-receipt`。Web 更新时重复执行安装命令。Desktop 通过应用内插件管理器或社区市场管理安装。早期本地 tarball 的用户可以卸载后从 GitHub 重新安装，原 profile 的账本仍可读取。

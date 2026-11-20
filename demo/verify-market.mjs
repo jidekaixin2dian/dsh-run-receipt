@@ -27,7 +27,7 @@ for (const file of [oldArchive, newArchive]) {
 }
 const [oldVersion, newVersion] = [...archives.keys()]
 assert.equal(oldVersion, '0.0.9')
-assert.equal(newVersion, '0.1.0')
+assert.match(newVersion, /^0\.1\.0(?:-beta\.\d+)?$/u)
 let latest = oldVersion
 let registry
 const digest = (kind, bytes, encoding) => createHash(kind).update(bytes).digest(encoding)

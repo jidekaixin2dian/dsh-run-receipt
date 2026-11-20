@@ -13,7 +13,7 @@ dsh plugin --profile web add github:jidekaixin2dian/dsh-run-receipt -y
 dsh --profile web
 ```
 
-Use the same `DSH_HOME` for installation and startup. In Desktop, open **Plugins → Add plugin**, enter `github:jidekaixin2dian/dsh-run-receipt`, and follow the prompts. Offline packages are available in [GitHub Releases](https://github.com/jidekaixin2dian/dsh-run-receipt/releases).
+Use the same `DSH_HOME` for installation and startup. In Desktop, open **Plugins**, choose **Install a third-party plugin** from the add menu, and enter `github:jidekaixin2dian/dsh-run-receipt`. Offline packages are available in [GitHub Releases](https://github.com/jidekaixin2dian/dsh-run-receipt/releases).
 
 ## Review a run
 

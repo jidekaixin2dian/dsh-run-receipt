@@ -13,11 +13,12 @@ New-Item -ItemType Directory "$lab/final-home/profiles/web","$lab/workspace","$l
 Copy-Item demo/profile.patch.yml "$lab/final-home/profiles/web/cordis.patch.yml"
 npm ci
 npm pack --pack-destination "$lab/packages"
+$version = npm pkg get version | ConvertFrom-Json
 $env:DSH_HOME = "$lab/final-home"
 $env:DSH_AGENTS_HOME = "$lab/final-home/agents"
 $env:DSH_TELEMETRY_DISABLED = '1'
 $env:RUN_RECEIPT_DEMO_KEY = 'loopback-demo'
-dsh plugin --profile web add "$lab/packages/jidekaixin2dian-dsh-run-receipt-0.1.0.tgz" -y
+dsh plugin --profile web add "$lab/packages/jidekaixin2dian-dsh-run-receipt-$version.tgz" -y
 ```
 
 新终端运行 `node demo/model.mjs 18979`。在继承上面环境变量的终端里进入 `$lab/workspace`，运行 `dsh --profile web --port 18977 --no-open *> "$lab/host.log"`。在另一窗口运行浏览器验收。
@@ -46,7 +47,7 @@ node "$src/demo/verify-panel.mjs" "$lab/replay-host.log" "$lab/evidence/native-r
 
 ## 升级与卸载
 
-`verify-market.mjs` 读取社区市场源码，使用 loopback npm registry 先提供 `0.0.9`，再提供 `0.1.0`。将首版包在临时目录解包，仅修改其 `package.json` 版本为 `0.0.9`，用 `npm pack --ignore-scripts` 生成旧版夹具。从一个全新的 `market-lab-*` 路径安装。
+`verify-market.mjs` 读取社区市场源码，使用 loopback npm registry 先提供 `0.0.9`，再提供正在验收的版本。将首版包在临时目录解包，仅修改其 `package.json` 版本为 `0.0.9`，用 `npm pack --ignore-scripts` 生成旧版夹具。从一个全新的 `market-lab-*` 路径安装。
 
 ```powershell
 node --experimental-transform-types "$src/demo/verify-market.mjs" $marketSource "$lab/market-lab-test" $newTgz $oldTgz "$lab/evidence/market-upgrade.json"

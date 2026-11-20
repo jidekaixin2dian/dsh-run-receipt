@@ -13,7 +13,7 @@ dsh plugin --profile web add github:jidekaixin2dian/dsh-run-receipt -y
 dsh --profile web
 ```
 
-用过 `DSH_HOME` 的话，安装和启动使用同一个值。Desktop 请打开「插件 → 添加插件」，输入 `github:jidekaixin2dian/dsh-run-receipt`，按宿主提示完成安装。离线安装包见 [GitHub Releases](https://github.com/jidekaixin2dian/dsh-run-receipt/releases)。
+用过 `DSH_HOME` 的话，安装和启动使用同一个值。Desktop 请打开「插件」，从「添加插件」的下拉菜单选择「安装第三方插件」，输入 `github:jidekaixin2dian/dsh-run-receipt`。离线安装包见 [GitHub Releases](https://github.com/jidekaixin2dian/dsh-run-receipt/releases)。
 
 ## 使用
 
